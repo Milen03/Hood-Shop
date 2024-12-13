@@ -23,10 +23,8 @@ const template = () =>html`
                     </button>
                 </div>
                 <div class="hidden lg:flex lg:gap-x-12">
-                    <a href="#" class="text-sm/6 font-semibold text-gray-900">Product</a>
-                    <a href="#" class="text-sm/6 font-semibold text-gray-900">Features</a>
-                    <a href="#" class="text-sm/6 font-semibold text-gray-900">Marketplace</a>
-                    <a href="#" class="text-sm/6 font-semibold text-gray-900">Company</a>
+                    <a href="/" class="text-sm/6 font-semibold text-gray-900">Home Page</a>
+                    <a href="/catalog" class="text-sm/6 font-semibold text-gray-900">Catalog</a>
                 </div>
                 <div class="hidden lg:flex lg:flex-1 lg:justify-end">
                     <a href="#" class="text-sm/6 font-semibold text-gray-900">Log in <span
@@ -84,14 +82,7 @@ const template = () =>html`
                 </div>
             </div>
             <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-                <div class="hidden sm:mb-8 sm:flex sm:justify-center">
-                    <div
-                        class="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                        Announcing our next round of funding. <a href="#" class="font-semibold text-indigo-600"><span
-                                class="absolute inset-0" aria-hidden="true"></span>Read more <span
-                                aria-hidden="true">&rarr;</span></a>
-                    </div>
-                </div>
+                
                 <div class="text-center">
                     <h1 class="text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">Hood Shop
                     </h1>

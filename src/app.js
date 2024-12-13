@@ -1,3 +1,10 @@
+import page from "./lib/page.js";
+import catalogView from "./views/catalogView.js";
 import homeView from "./views/homeView.js";
 
-homeView()
+//setup rout
+page('/',homeView)
+page('/catalog',catalogView)
+
+//Start routing
+page()
