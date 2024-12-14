@@ -1,7 +1,10 @@
+
 import page from "./lib/page.js";
 import catalogView from "./views/catalogView.js";
 import homeView from "./views/homeView.js";
+import layoutView from "./views/layoutView.js";
 
+page(layoutView)
 //setup rout
 page('/',homeView)
 page('/catalog',catalogView)
