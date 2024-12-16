@@ -2,7 +2,7 @@ import { render, html } from '../lib/lit-html.js'
 
 const rootElement = document.getElementById('root')
 
-const layoutTemplate = (body) => html`<div class="bg-white">
+const layoutTemplate = (body) => html`<div class="h-full bg-white">
 <header class="absolute inset-x-0 top-0 z-50">
     <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
@@ -26,9 +26,10 @@ const layoutTemplate = (body) => html`<div class="bg-white">
         <div class="hidden lg:flex lg:gap-x-12">
             <a href="/" class="text-sm/6 font-semibold text-gray-900">Home Page</a>
             <a href="/catalog" class="text-sm/6 font-semibold text-gray-900">Catalog</a>
+            <a href="/login" class="text-sm/6 font-semibold text-gray-900">Login</a>
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="#" class="text-sm/6 font-semibold text-gray-900">Log in <span
+            <a href="/login" class="text-sm/6 font-semibold text-gray-900">Log in <span
                     aria-hidden="true">&rarr;</span></a>
         </div>
     </nav>
