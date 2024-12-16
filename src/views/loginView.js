@@ -2,6 +2,7 @@ import { html } from "../lib/lit-html.js"
 //import { signInWithEmailAndPassword } from "../../node_modules/firebase/firebase-auth.js"
 import { signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js'
 import {auth} from "../config/firebaseInit.js"
+import page from "../lib/page.js"
 
 
 const template=(onSubmit)=> html`
@@ -61,7 +62,7 @@ async function loginFormSubmitHandler(e){
 
         const userCredential=await signInWithEmailAndPassword(auth, email ,password)
 
-        console.log(userCredential);
+        //console.log(userCredential);
 
         page.redirect('/')
         
