@@ -11,7 +11,7 @@ SoftUni JS Application Course Project. JS end to edn application
 * Page.js from routing
 * Lit-html for templating 
 * Mocha for unit testing
-* playwrigth for e2e testing
-* bundling (resolve package name)
+* Playwrigth for e2e testing
+* Vite Bundling (resolve package name)
+* Vite local dev server   
 * Git source Control wiht GitHub
-  
