@@ -11,6 +11,7 @@ import registerView from './views/registerView.js';
 
 
 
+
 //Setup layout
 page(authMiddleware )
 page(layoutView)
