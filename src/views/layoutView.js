@@ -69,13 +69,13 @@ const layoutTemplate = (body, ctx,) => html`<div class="h-full bg-white">
             <div class="mt-6 flow-root">
                 <div class="-my-6 divide-y divide-gray-500/10">
                     <div class="space-y-2 py-6">
-                        <a @click="${() => page('/')}"
+                        <a href="/"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Home Page</a>
-                        <a @click="${() => page('/catalog')}"
+                        <a href="/catalog"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Catalog</a>
-                        <a @click="${() => page('/login')}"
+                        <a href="/login"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Login</a>
-                            <a @click="${() => page('/register')}"
+                            <a href="/register"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Register</a>
                     </div>
                     ${ctx.isAuthenticated
@@ -178,11 +178,19 @@ ${body}
 </section>
 </div>
 `
+
+
+
+export default function (ctx, next) {
+console.log(ctx.user);
+console.log(ctx.isAuthenticated)
+
 document.addEventListener('DOMContentLoaded', () => {
     // Селектиране на елементите по `id`
     const menuButton = document.getElementById('menuButton'); // Бутон за отваряне
     const closeButton = document.getElementById('closeButton'); // Бутон за затваряне
     const mobileMenu = document.getElementById('mobileMenu'); // Мобилно меню
+    const menuLinks = mobileMenu.querySelectorAll('a');
 
     // Отваряне на менюто
     menuButton.addEventListener('click', () => {
@@ -193,11 +201,17 @@ document.addEventListener('DOMContentLoaded', () => {
     closeButton.addEventListener('click', () => {
         mobileMenu.classList.add('hidden'); // Добавяне на класа `hidden`
     });
+    
+    // Close menu when clicking a link
+menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+    });
 });
 
-export default function (ctx, next) {
-console.log(ctx.user);
-console.log(ctx.isAuthenticated)
+
+});
+ 
 
 
     ctx.render = (templateResult) => {
