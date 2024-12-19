@@ -75,12 +75,24 @@ const layoutTemplate = (body, ctx) => html`<div class="h-full bg-white">
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Catalog</a>
                         <a @click="${() => page('/login')}"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Login</a>
+                            <a @click="${() => page('/register')}"
+                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Register</a>
                     </div>
-                    <div class="py-6">
-                        <a href="#"
+                    ${ctx.isAuthenticated
+                        ? html`<div class="py-6">
+                        <a href="/logout"
+                            class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Log
+                            out</a>
+                    </div>
+                    `
+                    : html`<div class="py-6">
+                        <a href="/login"
                             class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Log
                             in</a>
                     </div>
+                    `
+                    }
+                    
                 </div>
             </div>
         </div>
