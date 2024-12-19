@@ -1,4 +1,5 @@
 import { render, html } from '../lib/lit-html.js'
+import page from '../lib/page.js';
 
 const rootElement = document.getElementById('root')
 
@@ -27,6 +28,7 @@ const layoutTemplate = (body, ctx) => html`<div class="h-full bg-white">
             <a href="/" class="text-sm/6 font-semibold text-gray-900">Home Page</a>
             <a href="/catalog" class="text-sm/6 font-semibold text-gray-900">Catalog</a>
             <a href="/login" class="text-sm/6 font-semibold text-gray-900">Login</a>
+            <a href="/register" class="text-sm/6 font-semibold text-gray-900">Register</a>
         </div>
 
         ${ctx.isAuthenticated
@@ -67,14 +69,12 @@ const layoutTemplate = (body, ctx) => html`<div class="h-full bg-white">
             <div class="mt-6 flow-root">
                 <div class="-my-6 divide-y divide-gray-500/10">
                     <div class="space-y-2 py-6">
-                        <a href="/"
+                        <a @click="${() => page.redirect('/')}"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Home Page</a>
-                        <a href="/catalog"
+                        <a @click="${() => page('/catalog')}"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Catalog</a>
-                        <a href="/login"
+                        <a @click="${() => page('/login')}"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Login</a>
-                        <a href="#"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Company</a>
                     </div>
                     <div class="py-6">
                         <a href="#"

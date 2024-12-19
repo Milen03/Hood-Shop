@@ -6,7 +6,9 @@ SoftUni JS Application Course Project. JS end to edn application
 
 ## Tech Stack
 * vanilla JS
-* FareBase from backend, hosting and authentication and database
+* FareBase hosting
+* Firebase authentication
+* Firebase database
 * Tailwind CSS with UI components
 * Page.js from routing
 * Lit-html for templating 
