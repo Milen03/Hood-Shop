@@ -43,6 +43,10 @@ const template=(onSubmit)=> html`
           Sign up
         </button>
       </div>
+      <div class="text-sm mt-8 text-center">
+  <a href="/login" class="font-semibold text-indigo-600 hover:text-indigo-500">Click here to login</a>
+</div>
+
     </form>
   </div>
 </div>
