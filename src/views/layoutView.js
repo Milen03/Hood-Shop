@@ -7,7 +7,7 @@ const layoutTemplate = (body, ctx,) => html`<div class="h-full bg-white">
 <header class="absolute inset-x-0 top-0 z-50">
     <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
-            <a href="#" class="-m-1.5 p-1.5">
+            <a href="/" class="-m-1.5 p-1.5">
                 <span class="sr-only">Your Company</span>
                 <img class="h-8 w-auto"
                     src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="">
@@ -25,10 +25,19 @@ const layoutTemplate = (body, ctx,) => html`<div class="h-full bg-white">
             </button>
         </div>
         <div class="hidden lg:flex lg:gap-x-12">
-            <a href="/" class="text-sm/6 font-semibold text-gray-900">Home Page</a>
-            <a href="/catalog" class="text-sm/6 font-semibold text-gray-900">Catalog</a>
-            <a href="/login" class="text-sm/6 font-semibold text-gray-900">Login</a>
+        <a href="/" class="text-sm/6 font-semibold text-gray-900">Home Page</a>
+        <a href="/catalog" class="text-sm/6 font-semibold text-gray-900">Catalog</a>
+            ${ctx.isAuthenticated
+                ? html`
+                <a href="/create" class="text-sm/6 font-semibold text-gray-900">Create</a>
+                <a href="/logout" class="text-sm/6 font-semibold text-gray-900">Logout</a>
+                `
+                : html` 
+                <a href="/login" class="text-sm/6 font-semibold text-gray-900">Login</a>
             <a href="/register" class="text-sm/6 font-semibold text-gray-900">Register</a>
+                `
+            }
+           
         </div>
 
         ${ctx.isAuthenticated
@@ -54,7 +63,7 @@ const layoutTemplate = (body, ctx,) => html`<div class="h-full bg-white">
             class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div class="flex items-center justify-between">
                 <a href="/" class="-m-1.5 p-1.5">
-                    <span class="sr-only">Your Company</span>
+                    <span class="sr-only">Hood shop</span>
                     <img class="h-8 w-auto"
                         src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="">
                 </a>
@@ -73,25 +82,20 @@ const layoutTemplate = (body, ctx,) => html`<div class="h-full bg-white">
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Home Page</a>
                         <a href="/catalog"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Catalog</a>
+
+                            
                         <a href="/login"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Login</a>
                             <a href="/register"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Register</a>
                     </div>
-                    ${ctx.isAuthenticated
-                        ? html`<div class="py-6">
+                    
+                        <div class="py-6">
                         <a href="/logout"
                             class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Log
                             out</a>
                     </div>
-                    `
-                    : html`<div class="py-6">
-                        <a href="/login"
-                            class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Log
-                            in</a>
-                    </div>
-                    `
-                    }
+                   
                     
                 </div>
             </div>
