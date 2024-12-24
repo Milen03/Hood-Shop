@@ -29,7 +29,7 @@ const layoutTemplate = (body, ctx,) => html`<div class="h-full bg-white">
         <a href="/catalog" class="text-sm/6 font-semibold text-gray-900">Catalog</a>
             ${ctx.isAuthenticated
                 ? html`
-                <a href="/create" class="text-sm/6 font-semibold text-gray-900">Create</a>
+                <a href="/catalog/create" class="text-sm/6 font-semibold text-gray-900">Create</a>
                 <a href="/logout" class="text-sm/6 font-semibold text-gray-900">Logout</a>
                 `
                 : html` 
@@ -82,6 +82,9 @@ const layoutTemplate = (body, ctx,) => html`<div class="h-full bg-white">
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Home Page</a>
                         <a href="/catalog"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Catalog</a>
+
+                            <a href="/catalog/create"
+                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50">Create</a>
 
                             
                         <a href="/login"

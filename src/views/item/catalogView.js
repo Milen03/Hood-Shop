@@ -1,7 +1,7 @@
 // import { database } from '../config/firebaseInit.js'
 // import { ref,get } from 'firebase/database'
-import itemApi from '../api/itemApi.js';
-import { html } from '../lib/lit-html.js';
+import itemApi from '../../api/itemApi.js';
+import { html } from '../../lib/lit-html.js';
 
 const template = (items = []) => html`
 <div class="bg-white">
