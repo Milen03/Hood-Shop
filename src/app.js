@@ -9,6 +9,7 @@ import { authMiddleware } from './middlewares/authMiddlewares.js';
 import logoutView from './views/logoutView.js';
 import registerView from './views/registerView.js';
 import createView from './views/item/createView.js';
+import detailsView from './views/item/detailsView.js';
 
 
 
@@ -19,10 +20,13 @@ page(layoutView)
 //setup rout
 page('/',homeView)
 page('/catalog',catalogView)
+
+page('/catalog/create',createView)
+page('/catalog/:itemId/details',detailsView)
+
 page('/login',loginView)
 page('/logout',logoutView)
 page('/register',registerView)
-page('/catalog/create',createView)
 
 //Start routing
 page()
