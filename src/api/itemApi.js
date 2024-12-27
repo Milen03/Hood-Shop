@@ -31,8 +31,18 @@ async function create(data) {
     return result
 }
 
+async function remove(itemId) {
+    const response = await fetch(`${url}/${itemId}.json`,{
+        method: 'DELETE'
+    })
+    if(!response.ok){
+        throw new Error('Failed to delete item')
+    }
+}
+
 export default{
     getAll,
     create,
-    getOne
+    getOne,
+    remove
 }
