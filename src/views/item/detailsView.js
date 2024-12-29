@@ -20,14 +20,27 @@ const temaplate = (item,onDelete) => html`
         <div>
           <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">${item.name}</h1>
           <div class="mt-6">
-            <h3 class="text-sm font-medium text-gray-900">For the product</h3>
+            <h3 style="font-size: 1,5rem;line-height: 6rem;"class="font-medium text-gray-900">For the product</h3>
             <ul role="list" class="font-medium list-disc space-y-4 pl-4 text-sm">
               <li class="text-gray-400"><span class="text-gray-600">Product price: ${item.price} Lv</span></li>
               <li class="text-gray-400"><span class="text-gray-600">Product size: ${item.size}</span></li>
               <li class="text-gray-400"><span class="text-gray-600">Contact phone number: ${item.phoneNumber}</span></li>
             </ul>
           </div>
+          
+
+          ${item.about
+            ? html`
+            <div class="mt-10">
+              <h2 class="text-sm font-medium text-gray-900">Details</h2>
+             <div class="mt-4 space-y-6">
+            <p class="text-sm text-gray-600">${item.about}</p>
+          </div>
         </div>
+            `
+            : ``
+          }
+         
 
         <!-- Delete Button -->
         <div class="mt-6">
