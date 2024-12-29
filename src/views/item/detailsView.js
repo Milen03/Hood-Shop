@@ -1,7 +1,8 @@
 import itemApi from '../../api/itemApi.js';
 import { html } from '../../lib/lit-html.js';
+import { getAuth } from 'firebase/auth'
 
-const temaplate = (item, onDelete) => html`
+const temaplate = (item, onDelete,isOwner) => html`
 <div class="bg-white">
   <div class="pt-6">
     <!-- Main container -->
@@ -41,8 +42,10 @@ const temaplate = (item, onDelete) => html`
         : ``
     }
          
-
-        <!-- Delete Button -->
+      
+        ${isOwner
+            ? html`
+            <!-- Delete Button -->
         <div class="mt-6">
           <button 
             @click=${onDelete} 
@@ -61,7 +64,11 @@ const temaplate = (item, onDelete) => html`
     Edit
   </a>
 </div>
-
+`
+: ''
+        }
+         
+       
       </div>
     </div>
   </div>
@@ -70,14 +77,14 @@ const temaplate = (item, onDelete) => html`
 
 
 export default async function (ctx) {
-    const item = await itemApi.getOne(ctx.params.itemId)
-    
-    // if (!item) {
-    //     console.log("Item not found");
-    //     return;
-    // }
+    const item = await itemApi.getOne(ctx.params.itemId) // Вземете елемента
+    const auth = getAuth()
+    const userData = auth.currentUser  // Вземете текущия потребител
+    const isOwner = userData && userData.uid === item._ownerId  // Проверете собствеността
+    console.log('Is Owner:', isOwner);
 
-    // console.log("Item ID:", item.id);
+   
+
 
     async function onDelete() {
         const confirmMessage = confirm('Are you sure you want to delete this item?')
@@ -96,5 +103,5 @@ export default async function (ctx) {
 
     //console.log(item);
 
-    ctx.render(temaplate(item, onDelete))
+    ctx.render(temaplate(item, onDelete,isOwner))
 }

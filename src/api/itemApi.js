@@ -1,4 +1,5 @@
 const url = 'https://softuni-hood-shop-default-rtdb.europe-west1.firebasedatabase.app/idem'
+import { auth } from "../config/firebaseInit"
 
 
 async function getAll(){
@@ -20,16 +21,31 @@ async function getOne(itemId) {
     return data
 }
 async function create(data) {
-    const response = await fetch(`${url}.json`,{
+    const user = auth.currentUser;
+
+    // Проверка дали потребителят е автентикиран
+    if (!user) {
+        throw new Error('User not authenticated.');
+    }
+
+    // Добавяне на _ownerId към данните
+    const item = {
+        ...data,
+        _ownerId: user.uid, // Добавяне на UID на текущия потребител
+    };
+
+    // Изпращане на заявка за създаване на елемент
+    const response = await fetch(`${url}.json`, {
         method: 'POST',
         headers: {
-            'Content-Type':'application/json'
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data)
-    })
-    const result = await response.json()
+        body: JSON.stringify(item),
+    });
 
-    return result
+    const result = await response.json();
+
+    return result;
 }
 
 async function remove(itemId) {
