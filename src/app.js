@@ -10,6 +10,7 @@ import logoutView from './views/logoutView.js';
 import registerView from './views/registerView.js';
 import createView from './views/item/createView.js';
 import detailsView from './views/item/detailsView.js';
+import editView from './views/item/editView.js';
 
 
 
@@ -23,6 +24,7 @@ page('/catalog',catalogView)
 
 page('/catalog/create',createView)
 page('/catalog/:itemId/details',detailsView)
+page('/catalog/:itemId/edit',editView)
 
 page('/login',loginView)
 page('/logout',logoutView)

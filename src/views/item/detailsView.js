@@ -1,7 +1,7 @@
 import itemApi from '../../api/itemApi.js';
 import { html } from '../../lib/lit-html.js';
 
-const temaplate = (item,onDelete) => html`
+const temaplate = (item, onDelete) => html`
 <div class="bg-white">
   <div class="pt-6">
     <!-- Main container -->
@@ -30,7 +30,7 @@ const temaplate = (item,onDelete) => html`
           
 
           ${item.about
-            ? html`
+        ? html`
             <div class="mt-10">
               <h2 class="text-sm font-medium text-gray-900">Details</h2>
              <div class="mt-4 space-y-6">
@@ -38,8 +38,8 @@ const temaplate = (item,onDelete) => html`
           </div>
         </div>
             `
-            : ``
-          }
+        : ``
+    }
          
 
         <!-- Delete Button -->
@@ -51,6 +51,17 @@ const temaplate = (item,onDelete) => html`
             Delete
           </button>
         </div>
+
+
+         <!-- Edit Button -->
+         <div class="mt-6">
+  <a
+    href="/catalog/${item.id}/edit"
+    class="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+    Edit
+  </a>
+</div>
+
       </div>
     </div>
   </div>
@@ -60,6 +71,13 @@ const temaplate = (item,onDelete) => html`
 
 export default async function (ctx) {
     const item = await itemApi.getOne(ctx.params.itemId)
+    
+    // if (!item) {
+    //     console.log("Item not found");
+    //     return;
+    // }
+
+    // console.log("Item ID:", item.id);
 
     async function onDelete() {
         const confirmMessage = confirm('Are you sure you want to delete this item?')
@@ -76,7 +94,7 @@ export default async function (ctx) {
     }
 
 
-    console.log(item);
+    //console.log(item);
 
-    ctx.render(temaplate(item,onDelete))
+    ctx.render(temaplate(item, onDelete))
 }

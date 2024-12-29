@@ -16,6 +16,7 @@ async function getOne(itemId) {
     const response = await fetch(`${url}/${itemId}.json`)
     const data = await response.json()
 
+    data.id = itemId
     return data
 }
 async function create(data) {
@@ -40,9 +41,23 @@ async function remove(itemId) {
     }
 }
 
+async function update(itemId, updatedData) {
+    const response = await fetch(`${url}/${itemId}.json`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedData),
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to update item');
+    }
+
+    return await response.json();
+}
 export default{
     getAll,
     create,
     getOne,
-    remove
+    remove,
+    update
 }
