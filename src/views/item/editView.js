@@ -84,21 +84,18 @@ const editTemplate = (item, onSubmit) => html`
 export default async function (ctx) {
     const item = await itemApi.getOne(ctx.params.itemId);
 
-    async function onSubmit(event) {
-        event.preventDefault();
-        const formData = new FormData(event.target);
+    async function onSubmit(e) {
+        e.preventDefault();
 
-        const updatedItem = {
-            imageUrl: formData.get('imageUrl'),
-            name: formData.get('name'),
-            price: parseFloat(formData.get('price')),
-            size: formData.get('size'),
-            phoneNumber: formData.get('phoneNumber'),
-            about: formData.get('about'),
-        };
+        // Извличане на данни от формуляра
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData);
+
+        data._ownerId = item._ownerId;
 
         try {
-            await itemApi.update(ctx.params.itemId, updatedItem);
+            // Изпращане на актуализираните данни
+            await itemApi.update(ctx.params.itemId, data);
             alert('Product updated successfully!');
             ctx.page.redirect(`/catalog/${ctx.params.itemId}/details`);
         } catch (err) {
@@ -109,3 +106,4 @@ export default async function (ctx) {
 
     ctx.render(editTemplate(item, onSubmit));
 }
+

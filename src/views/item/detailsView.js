@@ -101,7 +101,7 @@ export default async function (ctx) {
     }
 
 
-    //console.log(item);
+    console.log(item);
 
     ctx.render(temaplate(item, onDelete,isOwner))
 }
